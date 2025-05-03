@@ -23,8 +23,6 @@ Add Invoice:
 
 - PHP 7.4+ (8.0+ recommended)
 - MySQL or MariaDB database
-- Web server (Apache or Nginx)
-- Modern web browser
 
 ## Installation
 
