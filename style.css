@@ -1,0 +1,101 @@
+/* style.css */
+
+/* Define CSS Variables for Colors (Light Mode Defaults) */
+:root {
+    --body-bg: #f8f9fa; --body-color: #333; --container-bg: #ffffff; --container-shadow: rgba(0, 0, 0, 0.1); --header-bg: #343a40; --header-color: #ffffff; --nav-link-color: #f8f9fa; --nav-link-hover-bg: #495057; --nav-link-active-bg: #007bff; --section-bg: #ffffff; --section-shadow: rgba(0, 0, 0, 0.05); --form-label-color: #555; --input-border-color: #ced4da; --input-focus-border-color: #80bdff; --input-focus-shadow-color: rgba(0, 123, 255, 0.25); --input-placeholder-color: #aaa; --text-muted-color: #6c757d; --link-color: #007bff; --hr-color: #eee;
+    --button-primary-bg: #007bff; --button-primary-hover-bg: #0056b3; --button-primary-color: #ffffff; --button-secondary-bg: #6c757d; --button-secondary-hover-bg: #5a6268; --button-secondary-color: #ffffff; --button-delete-bg: #dc3545; --button-delete-hover-bg: #c82333; --button-delete-color: #ffffff; --button-edit-bg: #ffc107; --button-edit-hover-bg: #e0a800; --button-edit-color: #333; --button-arrive-bg: #28a745; --button-arrive-hover-bg: #218838; --button-arrive-color: #ffffff; --button-view-bg: #17a2b8; --button-view-hover-bg: #138496; --button-view-color: #ffffff; --button-disabled-bg: #cccccc; --button-disabled-color: #666666;
+    --table-border-color: #dee2e6; --table-header-bg: #e9ecef; --table-header-color: #495057; --table-row-hover-bg: #f1f1f1;
+    --status-ordered-color: #fd7e14; --status-instock-color: #28a745; --status-outofstock-color: #dc3545;
+    --notification-success-bg: #d4edda; --notification-success-color: #155724; --notification-success-border: #c3e6cb; --notification-error-bg: #f8d7da; --notification-error-color: #721c24; --notification-error-border: #f5c6cb; --notification-info-bg: #d1ecf1; --notification-info-color: #0c5460; --notification-info-border: #bee5eb; --notification-warning-bg: #fff3cd; --notification-warning-color: #856404; --notification-warning-border: #ffeeba;
+    --modal-bg: rgba(0, 0, 0, 0.6); --modal-content-bg: #fefefe; --modal-content-border: #888; --modal-close-color: #aaa; --modal-close-hover-color: #000;
+}
+
+/* Dark Mode Overrides */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --body-bg: #1a1a1a; --body-color: #e0e0e0; --container-bg: #2c2c2c; --container-shadow: rgba(255, 255, 255, 0.05); --header-bg: #1f1f1f; --header-color: #e0e0e0; --nav-link-color: #cccccc; --nav-link-hover-bg: #404040; --nav-link-active-bg: #0056b3; --section-bg: #2c2c2c; --section-shadow: rgba(255, 255, 255, 0.03); --form-label-color: #b0b0b0; --input-border-color: #555; --input-focus-border-color: #64b5f6; --input-focus-shadow-color: rgba(100, 181, 246, 0.25); --input-placeholder-color: #777; --text-muted-color: #999; --link-color: #64b5f6; --hr-color: #444;
+        --button-primary-bg: #0d6efd; --button-primary-hover-bg: #0b5ed7; --button-secondary-bg: #5c636a; --button-secondary-hover-bg: #4a4f54; --button-delete-bg: #dc3545; --button-delete-hover-bg: #b02a37; --button-edit-bg: #ffc107; --button-edit-hover-bg: #cc9a06; --button-edit-color: #1a1a1a; --button-arrive-bg: #198754; --button-arrive-hover-bg: #146c43; --button-view-bg: #0dcaf0; --button-view-hover-bg: #0aa3c2; --button-disabled-bg: #444; --button-disabled-color: #888;
+        --table-border-color: #444; --table-header-bg: #3a3a3a; --table-header-color: #e0e0e0; --table-row-hover-bg: #383838;
+        --status-ordered-color: #ff9800; --status-instock-color: #4caf50; --status-outofstock-color: #f44336;
+        --notification-success-bg: #14361f; --notification-success-color: #a3e1af; --notification-success-border: #2a6f3b; --notification-error-bg: #441a21; --notification-error-color: #f8b4bd; --notification-error-border: #8a2a38; --notification-info-bg: #0d3c45; --notification-info-color: #9eeaf9; --notification-info-border: #1d7a8a; --notification-warning-bg: #4d3803; --notification-warning-color: #ffe187; --notification-warning-border: #997404;
+        --modal-bg: rgba(0, 0, 0, 0.75); --modal-content-bg: #2c2c2c; --modal-content-border: #555; --modal-close-color: #aaa; --modal-close-hover-color: #fff;
+    }
+    input[type="text"], input[type="number"], input[type="date"], select, textarea { background-color: #3a3a3a; color: var(--body-color); border-color: var(--input-border-color); }
+    input::placeholder { color: var(--input-placeholder-color); }
+    input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); }
+}
+
+/* --- Base Styles using Variables --- */
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: var(--body-bg); color: var(--body-color); line-height: 1.6; }
+.container { max-width: 1400px; margin: 20px auto; padding: 0; background-color: var(--container-bg); border-radius: 8px; box-shadow: 0 4px 8px var(--container-shadow); overflow: hidden; }
+header { background-color: var(--header-bg); color: var(--header-color); padding: 15px 25px; margin: 0; display: flex; justify-content: space-between; align-items: center; }
+header h1 { color: var(--header-color); margin: 0; font-size: 1.8em; }
+header nav a { color: var(--nav-link-color); text-decoration: none; margin-left: 20px; padding: 8px 15px; border-radius: 4px; transition: background-color 0.2s ease; }
+header nav a:hover { background-color: var(--nav-link-hover-bg); }
+header nav a.active { background-color: var(--nav-link-active-bg); font-weight: bold; color: var(--button-primary-color); }
+.form-container, .filter-container, .inventory-section { padding: 25px; margin: 25px; background-color: var(--section-bg); border-radius: 5px; box-shadow: 0 2px 5px var(--section-shadow); }
+.inventory-section { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.form-row { display: flex; flex-wrap: wrap; margin-bottom: 20px; gap: 25px; }
+.form-group { flex: 1 1 200px; min-width: 180px; display: flex; flex-direction: column; margin-bottom: 15px; }
+.form-group:last-child { margin-bottom: 0; }
+.form-group.notes-group { flex-basis: 100%; flex-grow: 1; }
+label { margin-bottom: 8px; font-weight: bold; font-size: 0.9em; color: var(--form-label-color); }
+input[type="text"], input[type="number"], input[type="date"], select, textarea { width: 100%; padding: 10px; border: 1px solid var(--input-border-color); background-color: var(--container-bg); color: var(--body-color); border-radius: 4px; box-sizing: border-box; font-size: 1em; font-family: inherit; }
+textarea { min-height: 80px; resize: vertical; }
+input:focus, select:focus, textarea:focus { border-color: var(--input-focus-border-color); outline: 0; box-shadow: 0 0 0 0.2rem var(--input-focus-shadow-color); }
+input::placeholder { color: var(--input-placeholder-color); font-style: italic; font-size: 0.9em; }
+small { font-size: 0.8em; color: var(--text-muted-color); margin-top: 4px; }
+button { background-color: var(--button-primary-bg); color: var(--button-primary-color); border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; transition: background-color 0.2s ease; margin-right: 5px; margin-top: 10px; }
+button:hover { background-color: var(--button-primary-hover-bg); }
+button:disabled { background-color: var(--button-disabled-bg) !important; color: var(--button-disabled-color) !important; cursor: not-allowed; }
+.secondary-btn { background-color: var(--button-secondary-bg); color: var(--button-secondary-color); } .secondary-btn:hover { background-color: var(--button-secondary-hover-bg); }
+.delete-btn { background-color: var(--button-delete-bg); color: var(--button-delete-color); padding: 5px 10px; font-size: 13px; } .delete-btn:hover { background-color: var(--button-delete-hover-bg); }
+.edit-btn { background-color: var(--button-edit-bg); color: var(--button-edit-color); padding: 5px 10px; font-size: 13px;} .edit-btn:hover { background-color: var(--button-edit-hover-bg); }
+.arrive-btn { background-color: var(--button-arrive-bg); color: var(--button-arrive-color); padding: 5px 10px; font-size: 13px;} .arrive-btn:hover { background-color: var(--button-arrive-hover-bg); }
+.stock-adjust-btn { background-color: var(--button-secondary-bg); color: var(--button-secondary-color); padding: 3px 8px; font-size: 14px; font-weight: bold; line-height: 1; margin: 0 5px; } .stock-adjust-btn:hover { background-color: var(--button-secondary-hover-bg); }
+.view-btn { background-color: var(--button-view-bg); color: var(--button-view-color); padding: 5px 10px; font-size: 13px; } .view-btn:hover { background-color: var(--button-view-hover-bg); }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; table-layout: auto; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--table-border-color); vertical-align: middle; white-space: normal; }
+th { background-color: var(--table-header-bg); color: var(--table-header-color); font-weight: bold; font-size: 0.9em; text-transform: uppercase; position: sticky; top: 0; z-index: 1; }
+tr:hover { background-color: var(--table-row-hover-bg); }
+.actions { display: flex; flex-wrap: nowrap; gap: 5px; min-width: 100px; }
+.actions button { margin-bottom: 0; margin-top: 0; flex-shrink: 0; }
+/* Stock controls horizontal TD */
+.stock-controls-horizontal { text-align: center; white-space: nowrap; }
+/* Notes column min-width */
+#instock-inventory-table td:nth-child(10), #instock-inventory-table th:nth-child(10) { min-width: 150px; } /* In Stock Table: Notes = 10th child */
+#outofstock-inventory-table td:nth-child(10), #outofstock-inventory-table th:nth-child(10) { min-width: 150px; } /* Out Of Stock Table: Notes = 10th child */
+#ordered-inventory-table td:nth-child(8), #ordered-inventory-table th:nth-child(8) { min-width: 150px; } /* Ordered Table: Notes = 8th child */
+.amount-display { display: inline-block; text-align: center; font-weight: bold; min-width: 25px; }
+.status-ordered { color: var(--status-ordered-color); font-weight: bold; } .status-in_stock { color: var(--status-instock-color); font-weight: bold; } .status-out_of_stock { color: var(--status-outofstock-color); font-weight: bold; }
+.notification { padding: 15px; margin: 0 25px 20px 25px; border-radius: 4px; display: none; border: 1px solid transparent; font-size: 1em; }
+.modal-notification { margin: 15px 0 0 0; }
+.success { color: var(--notification-success-color); background-color: var(--notification-success-bg); border-color: var(--notification-success-border); }
+.error { color: var(--notification-error-color); background-color: var(--notification-error-bg); border-color: var(--notification-error-border); }
+.info { color: var(--notification-info-color); background-color: var(--notification-info-bg); border-color: var(--notification-info-border); }
+.warning { color: var(--notification-warning-color); background-color: var(--notification-warning-bg); border-color: var(--notification-warning-border); }
+.loading { text-align: center; padding: 30px; font-style: italic; color: var(--text-muted-color); font-size: 1.1em; }
+.inventory-section h2, #invoice-list-section h2 { border-bottom: 2px solid var(--link-color); padding-bottom: 10px; margin-bottom: 20px; color: var(--link-color); font-size: 1.5em; }
+.no-items { text-align: center; color: var(--text-muted-color); padding: 20px; font-style: italic;}
+#invoice-items-container .invoice-item-row { display: flex; flex-wrap: wrap; gap: 15px; padding: 15px 0; border-bottom: 1px dashed var(--hr-color); align-items: flex-end; }
+#invoice-items-container .invoice-item-row:last-child { border-bottom: none; } #invoice-items-container .form-group { margin-bottom: 0; flex: 1 1 150px; }
+#invoice-items-container .form-group label { font-size: 0.85em; margin-bottom: 4px; } #invoice-items-container .action-group { flex-basis: 80px; flex-grow: 0; align-self: flex-end; padding-bottom: 10px; }
+#invoice-items-container .remove-item-btn { width: 100%; padding: 8px; } #add-item-btn { margin-top: 15px; margin-bottom: 15px; }
+.modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: var(--modal-bg); }
+.modal-content { background-color: var(--modal-content-bg); margin: 5% auto; padding: 30px; border: 1px solid var(--modal-content-border); width: 90%; max-width: 600px; border-radius: 8px; position: relative; box-shadow: 0 5px 15px var(--container-shadow); }
+.close-modal { color: var(--modal-close-color); position: absolute; top: 10px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; }
+.close-modal:hover, .close-modal:focus { color: var(--modal-close-hover-color); text-decoration: none; }
+#invoice-detail-modal .modal-content { max-width: 900px; }
+#modal-items-table { margin-top: 20px; table-layout: auto; }
+#modal-items-table th, #modal-items-table td { font-size: 0.9em; vertical-align: top; white-space: normal; padding: 8px 10px; border-bottom-color: var(--table-border-color); }
+#modal-items-table th { background-color: var(--table-header-bg); color: var(--table-header-color); }
+#modal-items-table td:last-child { font-size: 0.8em; max-width: 150px; word-break: break-all; }
+#category-management-modal .modal-content, #edit-item-modal .modal-content { max-width: 550px; }
+#category-management-modal h3, #edit-item-modal h2 { margin-top: 0; border-bottom: 1px solid var(--hr-color); padding-bottom: 10px; margin-bottom: 20px; }
+#edit-item-modal h2 span { font-weight: normal; font-style: italic; font-size: 0.9em; color: var(--text-muted-color); }
+#edit-item-form .form-group { flex-basis: 45%; } #edit-item-form .notes-group { flex-basis: 100%; }
+#category-list { list-style: none; padding: 0; margin: 20px 0; }
+#category-list li { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--hr-color); } #category-list li:last-child { border-bottom: none; }
+#add-category-form { display: flex; gap: 10px; margin-top: 20px; padding-top: 10px; border-top: 1px solid var(--hr-color); }
+#add-category-form input[type="text"] { flex-grow: 1; } #add-category-form button { margin-top: 0; flex-shrink: 0; }
+a { color: var(--link-color); } a:hover { color: var(--button-primary-hover-bg); }
